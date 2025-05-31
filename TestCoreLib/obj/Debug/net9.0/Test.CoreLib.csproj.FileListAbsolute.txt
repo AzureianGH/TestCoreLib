@@ -1,0 +1,9 @@
+C:\Users\alexm\TestCoreLib\bin\Debug\net9.0\Test.CoreLib.deps.json
+C:\Users\alexm\TestCoreLib\bin\Debug\net9.0\Test.CoreLib.dll
+C:\Users\alexm\TestCoreLib\bin\Debug\net9.0\Test.CoreLib.pdb
+C:\Users\alexm\TestCoreLib\obj\Debug\net9.0\Test.CoreLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alexm\TestCoreLib\obj\Debug\net9.0\Test.CoreLib.csproj.CoreCompileInputs.cache
+C:\Users\alexm\TestCoreLib\obj\Debug\net9.0\Test.CoreLib.dll
+C:\Users\alexm\TestCoreLib\obj\Debug\net9.0\refint\Test.CoreLib.dll
+C:\Users\alexm\TestCoreLib\obj\Debug\net9.0\Test.CoreLib.pdb
+C:\Users\alexm\TestCoreLib\obj\Debug\net9.0\ref\Test.CoreLib.dll

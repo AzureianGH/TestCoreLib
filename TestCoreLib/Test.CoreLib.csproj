@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Test.CoreLib</AssemblyName>
+
+    <!-- Prevent generating any assembly info attributes -->
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+
+    <!-- Use a custom target framework -->
+    <TargetFramework>net9.0</TargetFramework>
+
+    <!-- Ignore ALL warnings -->
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <NoWarn>$(NoWarn);CS1591;CS0618;CS0168;CS0436</NoWarn>
+    <WarningLevel>0</WarningLevel>
+
+    <LangVersion>13.0</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+    <!-- Add freestanding properties -->
+    <DefineConstants>$(DefineConstants);FREESTANDING</DefineConstants>
+    <UseNETCoreGenerator>false</UseNETCoreGenerator>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <!-- Ensure no external assembly search paths -->
+    <AssemblySearchPaths>$(OutputPath)</AssemblySearchPaths>
+  </PropertyGroup>
+
+  <!-- Remove external references -->
+  <ItemGroup>
+    <!-- No external references -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="src\**\*.cs" />
+  </ItemGroup>
+
+  <!-- Pre-build event to display a message -->
+  <Target Name="PreBuild" BeforeTargets="Build">
+    <Exec Command="echo ⚙️  Building Test.CoreLib.dll..." />
+    <!-- Delete the existing dll in ..\nativeaot-patcher\examples\KernelExample\-->
+    <Delete Files="..\nativeaot-patcher\examples\KernelExample\Test.CoreLib.dll" />
+    <Exec Command="echo 🗑️  Deleted old Test.CoreLib.dll!" />
+  </Target>
+
+  <!-- Post-build event to copy the DLL -->
+  <Target Name="PostBuild" AfterTargets="Build">
+    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="..\nativeaot-patcher\examples\KernelExample\" />
+    <Exec Command="echo ✅ Copied Test.CoreLib.dll!" />
+  </Target>
+</Project>
